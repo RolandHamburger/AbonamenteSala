@@ -8,11 +8,13 @@
 #define MAX_START_DATE_SIZE 20
 #define MAX_END_DATE_SIZE 20
 #define MAX_FILE_LINE_SIZE 256
+#define MAX_FILE_NAME_SIZE 50
+#define MAX_TEMP_FILE_NAME_SIZE 50
 
 FILE *file;
 FILE *tempFile;
-char fileName[20] = "gymRecords.txt";
-char tempFileName[20] = "tempGymRecords.txt";
+char fileName[MAX_FILE_NAME_SIZE] = "gymRecords.txt";
+char tempFileName[MAX_TEMP_FILE_NAME_SIZE] = "tempGymRecords.txt";
 
 struct GymPass {
     int id;
@@ -27,7 +29,6 @@ void readAllGymEntries();
 void updateGymPassRecord();
 void deleteGymRecord();
 void applicationMenu();
-
 
 int main() {
 
@@ -62,6 +63,7 @@ void createGymPassRecord() {
             gymPass.lastName,
             gymPass.startDate,
             gymPass.endDate);
+
     fclose(file);
     printf("\nRecord %d added successfully!\n", gymPass.id);
 }
@@ -220,8 +222,8 @@ void deleteGymRecord() {
 }
 
 void menu() {
-    printf("**** WELCOME TO GYM RECORDS APP ****\n");
-    printf("1-Add new gym record.\n"
+    printf("**** WELCOME TO GYM RECORDS APP ****\n"
+           "1-Add new gym record.\n"
            "2-Show all gym records.\n"
            "3-Modify gym record.\n"
            "4-Delete gym record.\n"
