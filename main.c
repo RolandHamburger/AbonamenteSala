@@ -24,9 +24,9 @@ struct GymPass {
     char endDate[MAX_END_DATE_SIZE];
 };
 
-void createGymPassRecord();
-void readAllGymEntries();
-void updateGymPassRecord();
+void createGymRecord();
+void readAllGymRecords();
+void updateGymRecord();
 void deleteGymRecord();
 void applicationMenu();
 
@@ -36,7 +36,7 @@ int main() {
     return 0;
 }
 
-void createGymPassRecord() {
+void createGymRecord() {
 
     struct GymPass gymPass;
 
@@ -68,7 +68,7 @@ void createGymPassRecord() {
     printf("\nRecord %d added successfully!\n", gymPass.id);
 }
 
-void readAllGymEntries() {
+void readAllGymRecords() {
 
     char fileLine[MAX_FILE_LINE_SIZE];
     file = fopen(fileName, "r");
@@ -86,7 +86,7 @@ void readAllGymEntries() {
     printf("\n");
 }
 
-void updateGymPassRecord() {
+void updateGymRecord() {
 
     struct GymPass gymPass[MAX_STRUCT_SIZE];
     char fileLine[MAX_FILE_LINE_SIZE];
@@ -243,18 +243,18 @@ void applicationMenu() {
         switch (choice) {
             case 1:
                 printf("*** Add new gym record ***\n");
-                createGymPassRecord();
+                createGymRecord();
                 printf("\n");
                 menu();
                 break;
             case 2:
                 printf("*** All gym records ***\n");
-                readAllGymEntries();
+                readAllGymRecords();
                 menu();
                 break;
             case 3:
                 printf("*** Modify gym record ***\n");
-                updateGymPassRecord();
+                updateGymRecord();
                 printf("\n");
                 menu();
                 break;
